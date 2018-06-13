@@ -41,7 +41,7 @@ $phulp->task('default', function($phulp) {
   $shell = new \Phulp\Shell\Shell($phulp);
   $shell->exec([
     'command' => 'alias command',
-    'env' => $shell->getEnv()
+    'env' => $shell->getConfig()
   ]);
 });
 ```

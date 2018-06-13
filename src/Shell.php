@@ -29,7 +29,7 @@ class Shell {
     $this->phulp->exec($command, $async, $callback);
   }
 
-  public function getEnv($name = null) {
+  public function getConfig($name = null) {
     if ( $name ) {
       return $this->env[$name];
     } else {
