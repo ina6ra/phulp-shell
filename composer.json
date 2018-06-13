@@ -16,6 +16,7 @@
   },
   "require": {
     "php": ">=5.6",
+    "symfony/dotenv": "^3.4",
     "reisraff/phulp": "~1.11"
   }
 }

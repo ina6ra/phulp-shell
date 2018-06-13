@@ -25,15 +25,21 @@ $ composer install
 ### Using:
 
 ```
+# .phulp
+PATH=$PATH
+BASHRC_PATH=$HOME/.bashrc
+```
+
+```
 <?php
+
+// phulpfile.php
 
 $phulp->task('default', function($phulp) {
   $shell = new \Phulp\Shell\Shell($phulp);
   $shell->exec([
     'command' => 'alias command',
-    'env' => [
-      'BASHRC_PATH' => getenv('HOME').'/.bashrc'
-    ]
+    'env' => $_ENV
   ]);
 });
 ```

@@ -1,13 +1,20 @@
 <?php
 
 namespace Phulp\Shell;
+
 use Phulp\Phulp;
+use Symfony\Component\Dotenv\Dotenv;
 
 class Shell {
 
   private $phulp = null;
 
   public function __construct(Phulp $phulp = null) {
+    $path = getcwd().'/.phulp';
+    if (file_exists($path)) {
+        $dotenv = new Dotenv();
+        $dotenv->load($path);
+    }
     $this->phulp = $phulp ?: new Phulp();
   }
 
