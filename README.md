@@ -25,9 +25,11 @@ $ composer install
 ### Using:
 
 ```
-# .phulp
-PATH=$PATH
-BASHRC_PATH=$HOME/.bashrc
+# phulp.json
+{
+  "PATH": "$PATH",
+  "BASHRC_PATH": "$HOME/.bashrc"
+}
 ```
 
 ```
@@ -39,7 +41,7 @@ $phulp->task('default', function($phulp) {
   $shell = new \Phulp\Shell\Shell($phulp);
   $shell->exec([
     'command' => 'alias command',
-    'env' => $_ENV
+    'env' => $shell->getEnv()
   ]);
 });
 ```
