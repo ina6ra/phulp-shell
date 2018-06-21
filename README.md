@@ -25,10 +25,12 @@ $ composer install
 ### Using:
 
 ```
-# phulp.json
+# composer.json
 {
-  "PATH": "$PATH",
-  "BASHRC_PATH": "$HOME/.bashrc"
+  "name": "name/project",
+  "config": {
+    "BASHRC_PATH": "$HOME/.bashrc"
+  }
 }
 ```
 

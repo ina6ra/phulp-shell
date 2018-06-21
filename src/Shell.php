@@ -6,16 +6,16 @@ use Phulp\Phulp;
 class Shell {
 
   private $phulp = null;
-  private $env = [];
+  private $config = [];
 
   public function __construct(Phulp $phulp = null) {
-    $config = getcwd() . '/phulp.json';
+    $config = getcwd() . '/composer.json';
     if ( file_exists($config) ) {
         $json = file_get_contents($config);
         $json = json_decode($json, true);
-        foreach($json as $key => $value) {
-            $value = exec("echo " . $value);
-            if( $value ) $this->env[$key] = $value;
+        foreach($json['config'] as $key => $value) {
+            $value = exec('echo ' . $value);
+            if( $value ) $this->config[$key] = $value;
         }
     }
     $this->phulp = $phulp ?: new Phulp();
@@ -31,9 +31,9 @@ class Shell {
 
   public function getConfig($name = null) {
     if ( $name ) {
-      return $this->env[$name];
+      return $this->config[$name];
     } else {
-      return $this->env;
+      return $this->config;
     }
   }
 }
