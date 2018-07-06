@@ -1,8 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-$config = getcwd() . '/composer.json';
 $vendor = 'vendor';
+$autoload = preg_grep('/^--autoload=/', $argv);
+$autoload = $autoload ? array_shift($autoload) : null;
+
+$config = getcwd() . '/composer.json';
 $json = null;
 
 if( file_exists($config) ) {
@@ -19,7 +22,7 @@ if( $json != null ) {
 }
 
 if( ! preg_grep('/^--autoload=/', $argv) ) {
-  $argv[] = "--autoload={$vendor}/autoload.php";
+  $argv[] = $autoload ?: "--autoload={$vendor}/autoload.php";
 }
 
 require "{$vendor}/reisraff/phulp/bin/phulp.php";
