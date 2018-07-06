@@ -6,7 +6,10 @@ use Phulp\Phulp;
 class Shell {
 
   private $phulp = null;
-  private $config = [];
+
+  public $config = [];
+  public $env = [];
+  public $argv = [];
 
   public function __construct(Phulp $phulp = null) {
     $config = getcwd() . '/composer.json';
@@ -15,9 +18,11 @@ class Shell {
         $json = json_decode($json, true);
         foreach($json['config'] as $key => $value) {
             $value = exec('echo ' . $value);
-            if( $value ) $this->config[$key] = $value;
+            if( ctype_upper(str_replace('_', '', $key)) ) $this->env[$key] = $value;
+            else $this->config[$key] = $value;
         }
     }
+    $this->argv = $_SERVER['argv'];
     $this->phulp = $phulp ?: new Phulp();
   }
 
@@ -27,13 +32,5 @@ class Shell {
       $command['command'] = 'shopt -s expand_aliases;source $BASHRC_PATH;'."\n{$command['command']}";
     }
     $this->phulp->exec($command, $async, $callback);
-  }
-
-  public function getConfig($name = null) {
-    if ( $name ) {
-      return $this->config[$name];
-    } else {
-      return $this->config;
-    }
   }
 }
