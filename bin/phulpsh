@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+$config = getcwd() . '/composer.json';
+$vendor = 'vendor';
+$json = null;
+
+if( file_exists($config) ) {
+  $json = file_get_contents($config);
+  $json = json_decode($json, true);
+  if( isset($json['config']['vendor-dir']) ) {
+    $vendor = exec('echo ' . $json['config']['vendor-dir']);
+  }
+}
+
+if( $json != null ) {
+  $flag = $json['config']['phulp-tasks'] ?: false;
+  if( ! $flag ) $argv = array_slice($argv, 0, 2);
+}
+
+if( ! preg_grep('/^--autoload=/', $argv) ) {
+  $argv[] = "--autoload={$vendor}/autoload.php";
+}
+
+require "{$vendor}/reisraff/phulp/bin/phulp.php";

@@ -1,10 +1,10 @@
 {
-  "name": "17ringe/phulp-shell",
+  "name": "inaling/phulp-shell",
   "description": "The Shell addon for phulp",
   "keywords": ["phulp", "phulpplugin"],
   "license": "MIT",
   "type": "library",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [{
     "name": "Kazuhiro Inari",
     "email": "inarinlab@gmail.com"
@@ -16,6 +16,12 @@
   },
   "require": {
     "php": ">=5.6",
-    "reisraff/phulp": "~1.11"
-  }
+    "reisraff/phulp": "~1.12"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "bin": [
+    "bin/phulpsh"
+  ]
 }
