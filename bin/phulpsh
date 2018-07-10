@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php
 
+ini_set('display_errors', true);
+ini_set('register_argc_argv', true);
+
 $vendor = 'vendor';
 $autoload = preg_grep('/^--autoload=/', $argv);
 $autoload = $autoload ? array_shift($autoload) : null;
