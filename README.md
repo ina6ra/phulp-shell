@@ -7,13 +7,14 @@ It's a third-party project that's wrapper for "phulp exec function"
 ### Install:
 
 ```
+# composer.json
 {
   "repositories": [{
     "type": "vcs",
-    "url": "https://github.com/17ringe/phulp-shell"
+    "url": "https://github.com/inaling/phulp-shell"
   }],
   "require": {
-    "17ringe/phulp-shell": "dev-master"
+    "inaling/phulp-shell": "dev-master"
   }
 }
 ```
@@ -27,8 +28,8 @@ $ composer install
 ```
 # composer.json
 {
-  "name": "name/project",
   "config": {
+    "vendor-dir": "$HOME/vendor",
     "BASHRC_PATH": "$HOME/.bashrc"
   }
 }
@@ -39,13 +40,18 @@ $ composer install
 
 // phulpfile.php
 
-$phulp->task('default', function($phulp) {
-  $shell = new \Phulp\Shell\Shell($phulp);
+$phulp->task('taskname', function($phulp) {
+  $shell = new \Phulp\Plugin\Shell($phulp);
   $shell->exec([
-    'command' => 'alias command',
-    'env' => $shell->getConfig()
+    'command' => 'alias command'
   ]);
 });
+```
+
+### Run
+
+```
+$ phulpsh taskname
 ```
 
 ### Caution:

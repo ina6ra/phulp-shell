@@ -4,7 +4,7 @@
   "keywords": ["phulp", "phulpplugin"],
   "license": "MIT",
   "type": "library",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "authors": [{
     "name": "Kazuhiro Inari",
     "email": "inarinlab@gmail.com"
