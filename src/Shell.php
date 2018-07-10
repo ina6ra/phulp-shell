@@ -32,6 +32,7 @@ class Shell {
     if ( isset($command['env']['BASHRC_PATH']) ) {
       $command['command'] = 'shopt -s expand_aliases;source $BASHRC_PATH;'."\n{$command['command']}";
     }
+    $command['cwd'] = exec('echo ' . $command['cwd']);
     $this->phulp->exec($command, $async, $callback);
   }
 }
