@@ -33,6 +33,10 @@ class Shell {
       $command['command'] = 'shopt -s expand_aliases;source $BASHRC_PATH;'."\n{$command['command']}";
     }
     $command['cwd'] = exec('echo ' . $command['cwd']);
-    $this->phulp->exec($command, $async, $callback);
+    if ( $this->config['phulp_dry_run'] ) {
+      var_dump($command);
+    } else {
+      $this->phulp->exec($command, $async, $callback);
+    }
   }
 }
