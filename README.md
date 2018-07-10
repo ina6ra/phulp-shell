@@ -40,9 +40,9 @@ $ composer install
 |name|default|require|detail|
 |:---|:---|:---|:---|
 |BASHRC_PATH|-|true|bashrc path|
-|vendor-dir|-|false|custom vendor dir|
-|phulp_argc_argv|false|false|phulp multi tasks|
-|phulp_dry_run|false|false|dry run for phulpsh|
+|vendor-dir|-|-|custom vendor dir|
+|phulp_argc_argv|false|-|phulp multi tasks|
+|phulp_dry_run|false|-|dry run for phulpsh|
 
 ```
 <?php
