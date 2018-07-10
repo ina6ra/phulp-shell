@@ -1,6 +1,6 @@
 <?php
 
-namespace Phulp\Shell;
+namespace Phulp\Plugin;
 use Phulp\Phulp;
 
 class Shell {
