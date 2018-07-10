@@ -20,7 +20,7 @@ if( file_exists($config) ) {
 }
 
 if( $json != null ) {
-  $flag = $json['config']['phulp_argc_argv'] ?: false;
+  $flag = isset($json['config']['phulp_argc_argv']) ? $json['config']['phulp_argc_argv'] : false;
   if( ! $flag ) $argv = array_slice($argv, 0, 2);
 }
 
