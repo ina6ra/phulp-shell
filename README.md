@@ -29,11 +29,20 @@ $ composer install
 # composer.json
 {
   "config": {
+    "BASHRC_PATH": "$HOME/.bashrc",
     "vendor-dir": "$HOME/vendor",
-    "BASHRC_PATH": "$HOME/.bashrc"
+    "phulp_argc_argv": false,
+    "phulp_dry_run": false
   }
 }
 ```
+
+|name|default|require|detail|
+|:---|:---|:---|:---|
+|BASHRC_PATH|-|true|bashrc path|
+|vendor-dir|-|false|custom vendor dir|
+|phulp_argc_argv|false|false|phulp multi tasks|
+|phulp_dry_run|false|false|dry run for phulpsh|
 
 ```
 <?php
