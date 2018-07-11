@@ -49,11 +49,11 @@ $ composer install
 
 // phulpfile.php
 
-$phulp->task('taskname', function($phulp) {
-  $shell = new \Phulp\Plugin\Shell($phulp);
-  $shell->exec([
-    'command' => 'alias command'
-  ]);
+$phulp->task('taskname', function ($phulp) {
+    $shell = new \Phulp\Plugin\Shell($phulp);
+    $shell->exec([
+        'command' => 'alias command'
+    ]);
 });
 ```
 
