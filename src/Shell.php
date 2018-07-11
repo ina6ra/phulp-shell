@@ -45,7 +45,6 @@ class Shell
         $command['cwd'] = exec('echo ' . $command['cwd']);
         if ($this->config['phulp_dry_run']) {
             var_dump($command);
-            // var_dump($_SERVER['PHP_SELF'] );
         } else {
             $this->phulp->exec($command, $async, $callback);
         }
