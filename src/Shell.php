@@ -33,6 +33,16 @@ class Shell
 
     public function exec(array $command, $async = false, callable $callback = null)
     {
+        $command = $this->createCommand($command);
+        if ($this->config['phulp_dry_run']) {
+            var_dump($command);
+        } else {
+            $this->phulp->exec($command, $async, $callback);
+        }
+    }
+
+    public function createCommand(array $command)
+    {
         if (! isset($command['env'])) {
             $command['env'] = $this->env;
         }
@@ -46,10 +56,6 @@ class Shell
             $command['cwd'] = '$PWD';
         }
         $command['cwd'] = exec('echo ' . $command['cwd']);
-        if ($this->config['phulp_dry_run']) {
-            var_dump($command);
-        } else {
-            $this->phulp->exec($command, $async, $callback);
-        }
+        return $command;
     }
 }
