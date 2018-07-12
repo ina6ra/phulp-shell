@@ -57,12 +57,21 @@ $phulp->task('taskname', function ($phulp) {
 });
 ```
 
-### Run
+### Run:
 
 ```
 $ phulpsh taskname
 ```
 
-### Caution:
+## Caution
 
 ``BASHRC_PATH`` is Absolute path
+
+## Test
+
+```
+$ git clone https://github.com/inaling/phulp-shell
+$ cd phulp-shell
+$ composer install
+$ composer test
+```
