@@ -1,4 +1,9 @@
 {
+    "[json]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": false
+    },
     "[php]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
