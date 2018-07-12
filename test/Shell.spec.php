@@ -3,7 +3,6 @@
 describe('Phulp\Plugin\Shell', function () {
     beforeEach(function () {
         $this->shell = new \Phulp\Plugin\Shell();
-        $this->shell->config['phulp_dry_run'] = true;
         $this->assert = new \Peridot\Leo\Interfaces\Assert();
     });
 
