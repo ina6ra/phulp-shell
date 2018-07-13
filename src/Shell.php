@@ -27,6 +27,10 @@ class Shell
                 }
             }
         }
+        $anyenv = exec('echo $HOME/.anyenv');
+        if (! isset($this->env['ANYENV_ROOT']) && file_exists($anyenv)) {
+            $this->env['ANYENV_ROOT'] = $anyenv;
+        }
         $this->argv = $_SERVER['argv'];
         $this->phulp = $phulp ?: new Phulp();
     }
