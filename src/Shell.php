@@ -18,7 +18,8 @@ class Shell
         if (file_exists($config)) {
             $json = file_get_contents($config);
             $json = json_decode($json, true);
-            foreach ($json['config'] as $key => $value) {
+            $config = isset($json['config']) ? $json['config'] : [];
+            foreach ($config as $key => $value) {
                 $value = exec('echo ' . $value);
                 if (ctype_upper(str_replace('_', '', $key))) {
                     $this->env[$key] = $value;
