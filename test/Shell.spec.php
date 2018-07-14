@@ -8,6 +8,7 @@ describe('Phulp\Plugin\Shell', function () {
 
     describe('->createCommand()', function () {
         it('no bashrc, no cwd', function () {
+            unset($this->shell->env['BASHRC_PATH']);
             $input = 'echo no bashrc';
             $cwd = exec('echo $PWD');
             $command = [
@@ -32,6 +33,7 @@ describe('Phulp\Plugin\Shell', function () {
         });
 
         it('no bashrc, yes cwd', function () {
+            unset($this->shell->env['BASHRC_PATH']);
             $input = 'echo yes cwd';
             $cwd = '$PWD/test';
             $command = [
