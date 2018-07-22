@@ -39,7 +39,8 @@ class Shell
     public function exec(array $command, $async = false, callable $callback = null)
     {
         $command = $this->createCommand($command);
-        if ($this->config['phulp_dry_run']) {
+        $dryrun = isset($this->config['phulp_dry_run']) ? $this->config['phulp_dry_run'] : false;
+        if ($dryrun) {
             var_dump($command);
         } else {
             $this->phulp->exec($command, $async, $callback);
