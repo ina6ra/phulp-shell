@@ -31,8 +31,7 @@ $ composer install
   "config": {
     "BASHRC_PATH": "$HOME/.bashrc",
     "vendor-dir": "$HOME/vendor",
-    "phulp_multi_task": false,
-    "phulp_dry_run": false
+    "phulp_multi_task": false
   }
 }
 ```
@@ -42,7 +41,6 @@ $ composer install
 |BASHRC_PATH|-|true|bashrc path|
 |vendor-dir|-|-|custom vendor dir|
 |phulp_multi_task|false|-|disable multi task|
-|phulp_dry_run|false|-|dry run for phulpsh|
 
 ```
 <?php
@@ -59,8 +57,16 @@ $phulp->task('taskname', function ($phulp) {
 
 ### Run:
 
+``phulp_multi_task: false``
+
 ```
-$ phulpsh taskname
+$ phulpsh taskname argv1 argv2
+```
+
+``phulp_multi_task: true``
+
+```
+$ phulpsh taskname taskname2 taskname3
 ```
 
 ## Caution
