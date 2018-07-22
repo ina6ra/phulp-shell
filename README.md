@@ -31,7 +31,7 @@ $ composer install
   "config": {
     "BASHRC_PATH": "$HOME/.bashrc",
     "vendor-dir": "$HOME/vendor",
-    "phulp_argc_argv": true,
+    "phulp_multi_task": false,
     "phulp_dry_run": false
   }
 }
@@ -41,7 +41,7 @@ $ composer install
 |:---|:---|:---|:---|
 |BASHRC_PATH|-|true|bashrc path|
 |vendor-dir|-|-|custom vendor dir|
-|phulp_argc_argv|true|-|phulp multi tasks|
+|phulp_multi_task|false|-|disable multi task|
 |phulp_dry_run|false|-|dry run for phulpsh|
 
 ```
