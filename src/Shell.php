@@ -56,7 +56,9 @@ class Shell
             $command['env']['PATH'] = getenv('PATH');
         }
         if (isset($command['env']['BASHRC_PATH'])) {
-            $command['command'] = 'shopt -s expand_aliases;source $BASHRC_PATH;'."\n{$command['command']}";
+            $command['command'] =
+                "shopt -s expand_aliases;source {$command['env']['BASHRC_PATH']};"
+                ."\n{$command['command']}";
         }
         if (! isset($command['cwd'])) {
             $command['cwd'] = '$PWD';
