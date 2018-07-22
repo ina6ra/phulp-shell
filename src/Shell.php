@@ -55,9 +55,9 @@ class Shell
         if (! isset($command['env']['PATH'])) {
             $command['env']['PATH'] = getenv('PATH');
         }
-        if (isset($command['env']['BASHRC_PATH'])) {
+        if (isset($this->config['phulp_bashrc_path'])) {
             $command['command'] =
-                "shopt -s expand_aliases;source {$command['env']['BASHRC_PATH']};"
+                "shopt -s expand_aliases;source {$this->config['phulp_bashrc_path']};"
                 ."\n{$command['command']}";
         }
         if (! isset($command['cwd'])) {

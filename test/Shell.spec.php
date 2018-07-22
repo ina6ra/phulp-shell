@@ -8,7 +8,7 @@ describe('Phulp\Plugin\Shell', function () {
 
     describe('->createCommand()', function () {
         it('no bashrc, no cwd', function () {
-            unset($this->shell->env['BASHRC_PATH']);
+            unset($this->shell->config['phulp_bashrc_path']);
             $input = 'echo no bashrc';
             $cwd = exec('echo $PWD');
             $command = [
@@ -21,7 +21,7 @@ describe('Phulp\Plugin\Shell', function () {
         });
 
         it('yes bashrc, no cwd', function () {
-            $this->shell->env['BASHRC_PATH'] = exec('echo $HOME/.bashrc');
+            $this->shell->config['phulp_bashrc_path'] = exec('echo $HOME/.bashrc');
             $input = 'echo yes bashrc';
             $command = [
                 'command' => $input
@@ -29,11 +29,11 @@ describe('Phulp\Plugin\Shell', function () {
             $result = $this->shell->createCommand($command);
             $this->assert->include($result['command'], $input);
             $this->assert->include($result['command'], 'expand_aliases');
-            $this->assert->include($result['command'], $this->shell->env['BASHRC_PATH']);
+            $this->assert->include($result['command'], $this->shell->config['phulp_bashrc_path']);
         });
 
         it('no bashrc, yes cwd', function () {
-            unset($this->shell->env['BASHRC_PATH']);
+            unset($this->shell->config['phulp_bashrc_path']);
             $input = 'echo yes cwd';
             $cwd = '$PWD/test';
             $command = [

@@ -29,8 +29,8 @@ $ composer install
 # composer.json
 {
   "config": {
-    "BASHRC_PATH": "$HOME/.bashrc",
     "vendor-dir": "$HOME/vendor",
+    "phulp_bashrc_path": "$HOME/.bashrc",
     "phulp_multi_task": false
   }
 }
@@ -38,8 +38,7 @@ $ composer install
 
 |name|default|require|detail|
 |:---|:---|:---|:---|
-|BASHRC_PATH|-|true|bashrc path|
-|vendor-dir|-|-|custom vendor dir|
+|phulp_bashrc_path|-|true|absolute bashrc path|
 |phulp_multi_task|false|-|disable multi task|
 
 ```
@@ -71,7 +70,7 @@ $ phulpsh taskname taskname2 taskname3
 
 ## Caution
 
-``BASHRC_PATH`` is Absolute path
+``phulp_bashrc_path`` is Absolute path
 
 ## Test
 
