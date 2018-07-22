@@ -44,7 +44,7 @@ $ composer install
 ```
 <?php
 
-// phulpfile.php
+// PhulpFile.php
 
 $phulp->task('taskname', function ($phulp) {
     $shell = new \Phulp\Plugin\Shell($phulp);
@@ -56,16 +56,8 @@ $phulp->task('taskname', function ($phulp) {
 
 ### Run:
 
-``phulp_multi_task: false``
-
 ```
-$ phulpsh taskname argv1 argv2
-```
-
-``phulp_multi_task: true``
-
-```
-$ phulpsh taskname taskname2 taskname3
+$ phulpsh taskname
 ```
 
 ## Caution
