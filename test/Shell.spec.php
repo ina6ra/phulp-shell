@@ -3,12 +3,13 @@
 describe('Phulp\Plugin\Shell', function () {
     beforeEach(function () {
         $this->shell = new \Phulp\Plugin\Shell();
+        $this->shell->env = [];
+        $this->shell->config = [];
         $this->assert = new \Peridot\Leo\Interfaces\Assert();
     });
 
     describe('->createCommand()', function () {
         it('no bashrc, no cwd', function () {
-            unset($this->shell->config['phulp_bashrc_path']);
             $input = 'echo no bashrc';
             $cwd = exec('echo $PWD');
             $command = [
@@ -33,7 +34,6 @@ describe('Phulp\Plugin\Shell', function () {
         });
 
         it('no bashrc, yes cwd', function () {
-            unset($this->shell->config['phulp_bashrc_path']);
             $input = 'echo yes cwd';
             $cwd = '$PWD/test';
             $command = [
