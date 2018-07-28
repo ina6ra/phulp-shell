@@ -22,7 +22,7 @@ describe('Phulp\Plugin\Shell', function () {
         });
 
         it('yes bashrc, no cwd', function () {
-            $this->shell->config['phulp_bashrc_path'] = exec('echo $HOME/.bashrc');
+            $this->shell->setConfig('phulp_bashrc_path', '$HOME/.bashrc');
             $input = 'echo yes bashrc';
             $command = [
                 'command' => $input

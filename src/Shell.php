@@ -20,12 +20,7 @@ class Shell
             $json = json_decode($json, true);
             $config = isset($json['config']) ? $json['config'] : [];
             foreach ($config as $key => $value) {
-                $value = exec('echo ' . $value);
-                if (ctype_upper(str_replace('_', '', $key))) {
-                    $this->env[$key] = $value;
-                } else {
-                    $this->config[$key] = $value;
-                }
+                $this->setConfig($key, $value);
             }
         }
         $anyenv = exec('echo $HOME/.anyenv');
@@ -34,6 +29,17 @@ class Shell
         }
         $this->argv = $_SERVER['argv'];
         $this->phulp = $phulp ?: new Phulp();
+    }
+
+    public function setConfig($key, $value)
+    {
+        $value = str_replace('~', '$HOME', $value);
+        $value = exec('echo ' . $value);
+        if (ctype_upper(str_replace('_', '', $key))) {
+            $this->env[$key] = $value;
+        } else {
+            $this->config[$key] = $value;
+        }
     }
 
     public function exec(array $command, $async = false, callable $callback = null)
